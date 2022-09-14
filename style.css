@@ -42,8 +42,8 @@ display: flex;
 }
 
 #controls {
-  width: 22.8rem;
-  height: 10.8rem;
+  width: clamp(10rem, 10rem + 30vw, 22.8rem);
+  height: clamp(8rem, 8rem + 10vh, 10.8rem);
   background: rgba(66, 211, 255, 0.13);
   border-radius: 9999px;
 
@@ -63,6 +63,10 @@ button {
 
   cursor: pointer;
   
+}
+
+button svg {
+  width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
 }
 
 .footer {
