@@ -22,7 +22,9 @@ function countDown(){
     /* Essa função irá pegar o conteúdo do secondsCounter, pegar o mesmo secondsCounter
     .textContent - que no início está 00 -, transformá-lo em um numérico  e decrementar de 1-
     ou seja, depois de 1 segundo, queremos que diminua de 1 */
-    secondsCounter.textContent = seconds - 1;
+    secondsCounter.textContent = String(seconds - 1).padStart(2,"0");
+
+    //QUANDO TIVERMOS SOMENTE 1 CARACTER, IREMOS QUERER QUE ELE PREENCHA COM MAIS 1 ZERO
 
     //Depois de 1 segundo, temos que executar novamente essa lógica, para ir diminuindo o tempo.
     // Rodando essa função 1 vez, ele reduz os segundos de 1. Para ficarmos diminuindo os segundos,
