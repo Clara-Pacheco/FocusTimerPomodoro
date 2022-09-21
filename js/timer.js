@@ -2,6 +2,13 @@
   // ficar mudando e após 60'', o minuto decresce de 1
 
 
+export function Timer({
+  minutesCounter,
+  secondsCounter,
+  timerTimeOut,
+  resetControls
+}) {
+
 
   function resetTimer(){
     clearTimeout(timerTimeOut);
@@ -20,11 +27,6 @@
   
       updateTimerDisplay(minutes, 0)
   
-      // if((minutes<=0) && (seconds > 0) ){
-      //   while(seconds > 0){
-      //    seconds = seconds - 1;
-      //   }
-      // }
   
       if (minutes <= 0){
         resetControls();
@@ -59,4 +61,12 @@
       
     }, 1000)
   }
+
+  return {
+    countDown,
+    resetTimer
+  }
   
+}
+
+ 

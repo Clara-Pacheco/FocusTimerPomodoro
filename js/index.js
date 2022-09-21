@@ -1,5 +1,8 @@
+// default import
 import resetControls from "./controls"; // o ./ é necessário para dizer que estamos na pasta atual
-import "./timer.js"
+
+// named import
+import { Timer } from "./timer.js"
 
 
 
@@ -15,6 +18,17 @@ let minutesCounter = document.querySelector('.minutes');
 let secondsCounter = document.querySelector('.seconds');
 let minutes = Number(minutesCounter.textContent);
 
+// Executamos a função Timer e injetamos dependências nela -  tudo que a função Timer precisar para
+// ser executada corretamente, iremos injetar - passar como parâmetros - por aqui. E receberemos como
+// retorno da função Timer um objeto, que será atribuído a constante timer e que poderá ser usado no
+// resto do código agora, onde ele for necessário.
+
+const timer = Timer({
+  minutesCounter,
+  secondsCounter,
+  timerTimeOut,
+  resetControls,
+})
 
 buttonPlay.addEventListener('click', function(){
   buttonPlay.classList.add('hide');
@@ -24,7 +38,7 @@ buttonPlay.addEventListener('click', function(){
 
   // Quando dermos o play, ele chamará a função que irá alterar os segundos
 
-  countDown();
+  timer.countDown();
 
 })
 
@@ -37,7 +51,7 @@ buttonPause.addEventListener('click', function(){
 
 buttonStop.addEventListener('click', function(){
 resetControls();
-resetTimer();
+timer.resetTimer();
 
 
 })
@@ -65,7 +79,7 @@ buttonSet.addEventListener('click', function(){
 
  let newMinutes = prompt('Quantos minutos?');
  if(!newMinutes){
-  resetTimer();
+  timer.resetTimer();
   return
  }else{
   minutes = newMinutes
